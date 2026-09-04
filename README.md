@@ -16,6 +16,7 @@ Two packages, same plugin, different documentation language.
 | [`Auto-belt-refill-v0.35.7-CN/`](./Auto-belt-refill-v0.35.7-CN/) | 简体中文 | 中文玩家 |
 
 Copy the files into the corresponding locations in your local D2RLoader directory, then restart the game:
+
 将以下文件放入本地 D2RLoader 的对应位置，重启游戏即可：
 
 config\auto-belt-refill.toml
