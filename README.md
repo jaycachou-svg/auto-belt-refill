@@ -20,5 +20,5 @@ Each package mirrors the D2RLoader directory layout: copy the `plugins\` and
 每个包都按登录器目录结构排好：把 `plugins\` 和 `config\` 两个文件夹拖进
 `d2rloader\` 目录，重启游戏即可。
 
-- Tested with / 已实测：D2RLoader 1.1.0-beta / 1.2.1-beta, D2R 3.2.0 (92777) / 3.3.0 (93854).
+- Tested with / 已实测：D2RLoader 1.1.0-beta / 1.2.1-beta, D2R 3.2.92777 / 3.3.93854
 - Details / 详情: see the README inside either folder / 见任一文件夹内的 README。
