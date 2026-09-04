@@ -1,0 +1,69 @@
+# Auto-Belt-Refill
+# Belt auto-refill plugin for D2RLoader. Restart the game after any change.
+# Potion codes: hp5 super healing; hp4 greater healing; hp3 healing; hp2 lesser healing; hp1 minor healing | mp5..mp1 mana potions from super to minor | rvl full rejuvenation, rvs small rejuvenation
+# Other common consumables: vps stamina; yps antidote; wms thawing; tsc town portal scroll; isc identify scroll
+# Mod-added consumables: just use the item code, nothing else needed
+
+[general]
+# Master switch. false = the plugin is fully disabled
+enabled = true
+
+# Manual refill hotkey: press once to fill every empty belt slot from the column memories, e.g. fill_key = "F9"
+# You can also bind it in the game's control settings; if the toml and the in-game setting disagree, the in-game setting wins
+fill_key = ""
+
+# Snapshot hotkey: records each column's current hotkey-row (the bottom row of the belt, keys 1-4) consumable type as its refill memory, e.g. snapshot_key = "F8"
+# There are two ways to update a column's memory:
+# First, press the snapshot key to force-update it, mainly for manual refill
+# Second, manually change the bottom two rows of a column to the same consumable type, mainly for auto refill
+snapshot_key = ""
+
+# Auto-refill: keeps refilling a slot automatically as soon as its consumable is drunk. Enabled by default
+auto_refill = true
+
+# Auto-refill poll interval in frames (60 fps: 15 frames ~ 0.25 s). Each poll is a single read-only check
+# Tune it to your machine; the load is negligible, with self-throttling wake/sleep built in. Smaller = faster reaction. Valid range 2..360,
+# values outside the range are clamped to the boundary. Restart the game after changing
+auto_poll_frames = 15
+
+# Diagnostic log master switch (default off, do not enable for normal play): controls all troubleshooting logs - slot query observation, per-slot belt snapshots, memory changes, per-move refill details
+# When off, normal play only writes a few key lines (version, refill triggers and results, refusals, watch chain status) and the log file grows slowly. Turn on only when refills misbehave
+debug_logs = false
+
+# Prefer-the-larger-potion switch: hp5 before hp4, rvl (full rejuvenation) before rvs (small).
+# Auto-learned columns pick from large to small by this rule; consumables lists without an explicit priority follow it too.
+prefer_large = true
+
+# ---------------- Per-column settings ----------------
+# A column with no [columnN] section = unassigned, its memory is learned from in-game behavior
+# Examples:
+# [column1] #column1 sets the properties of belt column 1
+# consumables #the custom consumable list for this column; refill priority goes from left to right
+# consumables = ["rvl", "hp5", "hp4"] #refill full rejuvenation first, then super healing, then greater healing
+# consumables = ["mp5", "mp4", "mp3", "mp2", "mp1"] #all five mana grades, super mana first
+# consumables = [] #nothing inside = unspecified, in-game memory learning is used (leaving the line out counts the same)
+# locked = true #lock this column: the plugin only refills the consumables above, ignoring in-game placement, pickups, the snapshot key and every other rule that could change this column's memory
+#				(ps: this column always stays within its consumables list, never changes, and the player can no longer adjust it in game.)
+#				(ps: if the game refuses a move for a locked column, the plugin never forces it past the game's basic mechanics - in particular, the game itself locks a column to the type of its first slot item.)
+# locked = false #do not lock: this column's memory can be updated by placing a consumable into its hotkey row or pressing the snapshot key
+#				(ps: to change a column's refill type in game, set its bottom two rows to the same consumable type, or press the snapshot key to update the current memory.)
+
+# Belt column 1:
+[column1]
+consumables = []
+locked = false
+
+# Belt column 2:
+[column2]
+consumables = []
+locked = false
+
+# Belt column 3:
+[column3]
+consumables = []
+locked = false
+
+# Belt column 4:
+[column4]
+consumables = []
+locked = false
